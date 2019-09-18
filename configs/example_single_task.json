@@ -1,0 +1,171 @@
+{
+  "dataset_reader": {
+    "type": "recipeqa",
+    "token_indexers": {
+      "tokens": {
+        "type": "single_id",
+        "lowercase_tokens": true
+      },
+      "token_characters": {
+        "type": "characters",
+        "character_tokenizer": {
+          "byte_encoding": "utf-8",
+          "start_tokens": [
+            259
+          ],
+          "end_tokens": [
+            260
+          ]
+        }
+      }
+    },
+    "task": ["visual_cloze"],
+    "lookup_path": "lookup.json",
+    "feat_path": "https://vision.cs.hacettepe.edu.tr/files/recipeqa/img_features_resnet50.pkl",
+    "ing_path": "recipeqa_ingredients_new.json"
+  },
+  "train_data_path": "https://vision.cs.hacettepe.edu.tr/files/recipeqa/small_train.json",
+  "validation_data_path": "https://vision.cs.hacettepe.edu.tr/files/recipeqa/small_val.json",
+  "model": {
+    "type": "prn4recipeqa",
+    "text_field_embedder": {
+      "token_embedders": {
+        "tokens": {
+          "type": "embedding",
+          "pretrained_file": "https://vision.cs.hacettepe.edu.tr/files/recipeqa/glove.6B.100d_extended.txt",
+          "embedding_dim": 100,
+          "trainable": false
+        },
+        "token_characters": {
+          "type": "character_encoding",
+          "embedding": {
+            "num_embeddings": 262,
+            "embedding_dim": 16
+          },
+          "encoder": {
+            "type": "cnn",
+            "embedding_dim": 16,
+            "num_filters": 100,
+            "ngram_filter_sizes": [
+              5
+            ]
+          },
+          "dropout": 0.2
+        }
+      }
+    },
+    "memory_enabled": true,
+    "memory_update": true,
+    "memory_concat": true,
+    "save_memory_snapshots":false,
+    "save_entity_embeddings": false,
+    "margin": 0.1,
+    "max": 0,
+    "num_highway_layers": 2,
+    "phrase_layer": {
+      "type": "lstm",
+      "bidirectional": true,
+      "input_size": 200,
+      "hidden_size": 100,
+      "num_layers": 1,
+      "dropout": 0.2
+    },
+    "similarity_function": {
+      "type": "linear",
+      "combination": "x,y,x*y",
+      "tensor_1_dim": 200,
+      "tensor_2_dim": 200
+    },
+    "modeling_layer": {
+      "type": "lstm",
+      "bidirectional": true,
+      "input_size": 800,
+      "hidden_size": 100,
+      "num_layers": 2,
+      "dropout": 0.2
+    },
+    "modeling_layer_memory": {
+      "type": "lstm",
+      "bidirectional": true,
+      "input_size": 800,
+      "hidden_size": 100,
+      "num_layers": 2,
+      "dropout": 0.2
+    },
+    "answer_layer_image": {
+      "type": "lstm",
+      "bidirectional": true,
+      "input_size": 2048,
+      "hidden_size": 128,
+      "num_layers": 1,
+      "dropout": 0.2
+    },
+    "answer_layer_text": {
+      "type": "lstm",
+      "bidirectional": false,
+      "input_size": 200,
+      "hidden_size": 200,
+      "num_layers": 1,
+      "dropout": 0.2
+    },
+    "question_image_encoder": {
+      "type": "lstm",
+      "bidirectional": true,
+      "input_size": 2048,
+      "hidden_size": 100,
+      "num_layers": 1,
+      "dropout": 0.2
+    },
+    "step_layer": {
+      "type": "lstm",
+      "bidirectional": true,
+      "input_size": 200,
+      "hidden_size": 100,
+      "num_layers": 1,
+      "dropout": 0.2
+    },
+    "num_heads": 2,
+    "num_slots": 61,
+    "last_layer_hidden_dims": [512,512,256,128],
+    "last_layer_num_layers": 4,
+    "projection_input_dim": 2048,
+    "projection_hidden_dims": [1024,512,256,128],
+    "mask_lstms": false
+
+  },
+  "iterator": {
+    "type": "bucket",
+    "sorting_keys": [
+                  [
+        "passage",
+        "num_tokens"
+      ],
+      [ "ingredients",
+        "num_tokens"]
+
+    ],
+    "batch_size": 8,
+    "padding_noise": 0.1
+  },
+  "trainer": {
+    "num_epochs": 200,
+    "grad_norm": 5.0,
+    "patience": 10,
+    "validation_metric": "-loss",
+    "cuda_device": [0,1,2,3],
+    "learning_rate_scheduler": {
+      "type": "reduce_on_plateau",
+      "factor": 0.50,
+      "mode": "max",
+      "patience": 2
+    },
+    "optimizer": {
+      "type": "adam",
+      "betas": [
+        0.9,
+        0.9
+      ],
+      "lr": 1e-4
+    }
+  }
+}

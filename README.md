@@ -58,7 +58,7 @@ allennlp train config_file -s  directory_to_save --include-package recipeqalib
 ### Example
 We prepared 2 example config files. One of them is for single-task training, and the other one is for multi-task training. For training the single-task model run the following command:
 ```bash
-allennlp train ./configs/example.json -s ./save/example --include-package recipeqalib
+allennlp train ./configs/example_single_task.json -s ./save/example_single_task --include-package recipeqalib
 ```
 For training the multi-task model run the following command:
 ```bash

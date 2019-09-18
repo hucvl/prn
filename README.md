@@ -7,7 +7,7 @@ This is the implementation of [ Procedural Reasoning Networks for Understanding 
 See our [website]([https://hucvl.github.io/prn/](https://hucvl.github.io/prn/))  for more information about the model!
 
 <div align="center">
-  <img src="https://hucvl.github.io/prn/index_files/overview_v5.png" style="float:left" width="100%">
+  <img src="https://hucvl.github.io/prn/index_files/overview_v5.png" style="float:left" width="80%">
 </div>
 
 ## Bibtex

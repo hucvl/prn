@@ -23,22 +23,19 @@ For PRN:
 
 For RecipeQA dataset:
 ```
-@article{DBLP:journals/corr/abs-1809-00812,
-  author    = {Semih Yagcioglu and
-               Aykut Erdem and
-               Erkut Erdem and
-               Nazli Ikizler{-}Cinbis},
-  title     = {RecipeQA: {A} Challenge Dataset for Multimodal Comprehension of Cooking
-               Recipes},
-  journal   = {CoRR},
-  volume    = {abs/1809.00812},
-  year      = {2018},
-  url       = {http://arxiv.org/abs/1809.00812},
-  archivePrefix = {arXiv},
-  eprint    = {1809.00812},
-  timestamp = {Fri, 05 Oct 2018 11:34:52 +0200},
-  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1809-00812},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+@inproceedings{yagcioglu-etal-2018-recipeqa,
+   title = “{R}ecipe{QA}: A Challenge Dataset for Multimodal Comprehension of Cooking Recipes”,
+   author = “Yagcioglu, Semih  and
+     Erdem, Aykut  and
+     Erdem, Erkut  and
+     Ikizler-Cinbis, Nazli”,
+   booktitle = “Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing”,
+   year = “2018",
+   address = “Brussels, Belgium”,
+   publisher = “Association for Computational Linguistics”,
+   url = “https://www.aclweb.org/anthology/D18-1166“,
+   doi = “10.18653/v1/D18-1166”,
+   pages = “1358--1368",
 }
 ```
 

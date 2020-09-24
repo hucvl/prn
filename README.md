@@ -3,7 +3,7 @@
   <b>Mustafa Sercan Amac, Semih Yagcioglu, Aykut Erdem, Erkut Erdem</b></span>
 </p>
 
-This is the implementation of [ Procedural Reasoning Networks for Understanding Multimodal Procedures]([https://www.aclweb.org/anthology/K19-1041/]) (CoNLL 2019) on a RecipeQA dataset: [RecipeQA dataset]([https://hucvl.github.io/recipeqa/](https://hucvl.github.io/recipeqa/)) . We propose Procedural Reasoning Networks (PRN) to address the problem of comprehending procedural commonsense knowledge.
+This is the implementation of [ Procedural Reasoning Networks for Understanding Multimodal Procedures](https://www.aclweb.org/anthology/K19-1041/) (CoNLL 2019) on a RecipeQA dataset: [RecipeQA dataset]([https://hucvl.github.io/recipeqa/](https://hucvl.github.io/recipeqa/)) . We propose Procedural Reasoning Networks (PRN) to address the problem of comprehending procedural commonsense knowledge.
 See our [website]([https://hucvl.github.io/prn/](https://hucvl.github.io/prn/))  for more information about the model!
 
 <div align="center">
